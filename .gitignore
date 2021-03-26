@@ -1,0 +1,93 @@
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+!nightwatch/**/*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+*.suo
+*.dbmdl
+*.orig
+/Deploy
+/.vs
+/packages
+Scripts-Build
+*.jfm
+*.orig
+node_modules/
+bower_components/
+typings/
+src/Web/Notified.Web.App/wwwroot/*
+src/Web/Notified.Web.Admin/wwwroot/*
+src/Web/Notified.Web.Newsroom/wwwroot/*
+project.lock.json
+build/Staging/**/*
+build/Production/**/*
+/src/Notified.Api.App/NodeServices/*.pdf
+/src/Web/Clients/dist-server/**
+/src/Web/Clients/dist/
+/ExtraServices/Notified.Extra.Services/.vs/
+/.logs/
+/.tye/
+
+# Mac metafiles
+.DS_Store
+
+# Vim tempfiles
+*~
+*.swp
+
+# Visual Studio Code
+.vscode
+
+# VS Multiple Startup Manager Config
+*.sln.startup.json
+
+# Ignore Local AppSettings
+appsettings.local.json
+
+# Docker-Compose
+docker-compose.override.yml
+
+# Cassandra Workbench
+.cassandraWorkbench*
+
+# RabbitMQ
+Properties.xml
+
+# Visual Studio Publish Profiles
+src/*/Properties/PublishProfiles/
+# Ignoring .sql and .html under database/docs
+# Files generated based on the *.org document
+database/docs/*.html
+database/docs/*.sql
+
+# Rider
+.idea
+/src/docker-compose/azure-client.env
+
+*/packages.lock.json
+
+profile.arm.json
+*.code-workspace

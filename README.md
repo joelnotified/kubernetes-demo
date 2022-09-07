@@ -39,11 +39,15 @@ Create a `Service` which we can use to access the pods in a load balanced way.
 ## An Ingress Controller
 In order to access a service (and indirectly a pod) from outside the cluster, we need an Ingress Controller. The one we use is [Traefik](https://traefik.io/).
 
+### Setup Traefik
 1. `cd traefik`
-1. `kubectl apply -f 00-account.yaml -f 00-role.yaml -f 01-role-binding.yaml -f 02-traefik.yaml -f 02-traefik-services.yaml`
+1. `kubectl apply -f 00-role.yaml -f 00-account.yaml -f 01-role-binding.yaml -f 02-traefik.yaml -f 02-traefik-services.yaml`
 1. http://localhost:8080/dashboard/#/ should show you the Traefik dashboard
 1. http://localhost:80 will give you a 404 (from Traefik)
-1. `kubectl apply -f 03-whoami-ingress.yaml`
+
+### Setup an Ingress resource
+1. `kubectl apply -f 03-whoami.yaml -f 03-whoami-services.yaml -f 04-whoami-ingress.yaml`
+1. http://localhost:80
 
 # Doing GitOps using Flux
 

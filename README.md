@@ -61,7 +61,7 @@ In order to access a service (and indirectly a pod) from outside the cluster, we
 
 1. Start by deleting the previous stuff `kubectl delete -f 00-role.yaml -f 00-account.yaml -f 01-role-binding.yaml -f 02-traefik.yaml -f 02-traefik-services.yaml -f 03-whoami.yaml -f 03-whoami-services.yaml -f 04-whoami-ingress.yaml`
 1. `kubectl kustomize` will use kustomize to merge the files into one.
-1. `kubectl apply -k`
+1. `kubectl apply -k ./`
 
 # Doing GitOps using Flux
 [Flux](https://fluxcd.io/) is a tool that helps us do "GitOps". That means that we can have a desired state in git, and it will be Flux's job to make sure that state is reconciled in the cluster.

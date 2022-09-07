@@ -62,10 +62,14 @@ In order to access a service (and indirectly a pod) from outside the cluster, we
 1. Start by deleting the previous stuff `kubectl delete -f 00-role.yaml -f 00-account.yaml -f 01-role-binding.yaml -f 02-traefik.yaml -f 02-traefik-services.yaml -f 03-whoami.yaml -f 03-whoami-services.yaml -f 04-whoami-ingress.yaml`
 1. `kubectl kustomize` will use kustomize to merge the files into one.
 1. `kubectl apply -k`
+
 # Doing GitOps using Flux
 [Flux](https://fluxcd.io/) is a tool that helps us do "GitOps". That means that we can have a desired state in git, and it will be Flux's job to make sure that state is reconciled in the cluster.
 
 Flux is running as a pod in the cluster, listening for changes in the git repository while also making sure the cluster matches what's in git.
 
-1. Create a personal access token in GitHub: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+1. Make sure you're good to go: `flux check --pre`
+1. Install Flux in the cluster, and create a new personal reposoty flux will sync against `flux bootstrap github --owner=$env:GITHUB_USER --repository=flux-demo --branch=main --path=./clusters/my-cluster --personal`
+1. Check Flux installation `kubectl get pods -n flux-system`
+1. Clone your new repo: `git clone https://github.com/$env:GITHUB_USER/flux-demo` and open it in an editor
 1. 

@@ -14,7 +14,15 @@ Make sure you have `kubectl` installed. It should be installed as part of Docker
 ## Step 3. Connect to the cluster using Lens
 You might also want to connect to the cluster using Lens, so that you get a better overview of what's going on. The cluster should be listed in Lens and you should be able to connect to it.
 
-# Simple kube apply
+## Step 4. Create a personal access token 
+1. In order to run Flux locally, you need to create a personal access token in GitHub: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token.
+1. `$env:GITHUB_TOKEN='<your token>'`
+1. `$env:GITHUB_USER='<your username>'`
+
+## Step 5. Install Flux CLI
+You're going to need the Flux CLI, install it from here: https://fluxcd.io/flux/installation/#install-the-flux-cli (again, Chocolatey is an easy way for Windows).
+
+# Simple kube apply and kustomize
 ## Create a namespace
 1. `kubectl get namespaces` will list the existing namespaces
 1. `cd manifests`
@@ -49,5 +57,15 @@ In order to access a service (and indirectly a pod) from outside the cluster, we
 1. `kubectl apply -f 03-whoami.yaml -f 03-whoami-services.yaml -f 04-whoami-ingress.yaml`
 1. http://localhost:80
 
-# Doing GitOps using Flux
+## Kustomize
 
+1. Start by deleting the previous stuff `kubectl delete -f 00-role.yaml -f 00-account.yaml -f 01-role-binding.yaml -f 02-traefik.yaml -f 02-traefik-services.yaml -f 03-whoami.yaml -f 03-whoami-services.yaml -f 04-whoami-ingress.yaml`
+1. `kubectl kustomize` will use kustomize to merge the files into one.
+1. `kubectl apply -k`
+# Doing GitOps using Flux
+[Flux](https://fluxcd.io/) is a tool that helps us do "GitOps". That means that we can have a desired state in git, and it will be Flux's job to make sure that state is reconciled in the cluster.
+
+Flux is running as a pod in the cluster, listening for changes in the git repository while also making sure the cluster matches what's in git.
+
+1. Create a personal access token in GitHub: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+1. 

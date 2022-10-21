@@ -69,7 +69,7 @@ In order to access a service (and indirectly a pod) from outside the cluster, we
 Flux is running as a pod in the cluster, listening for changes in the git repository while also making sure the cluster matches what's in git.
 
 1. Make sure you're good to go: `flux check --pre`
-1. Install Flux in the cluster, and create a new personal reposoty flux will sync against `flux bootstrap github --owner=$env:GITHUB_USER --repository=fleet-infra --branch=main --path=./clusters/my-cluster --personal`
+1. Install Flux in the cluster, and create a new personal reposoty flux will sync against `flux bootstrap github --owner=$env:GITHUB_USER --repository=flux-demo --branch=main --path=./clusters/my-cluster --personal`
 1. Check Flux installation `kubectl get pods -n flux-system`
 1. Clone your new repo: `git clone https://github.com/$env:GITHUB_USER/fleet-infra` and open it in an editor
 1. 
